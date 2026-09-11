@@ -1,3 +1,10 @@
+## Live demo & GitHub Pages
+
+- **Project homepage (GitHub Pages):** https://harshithasatthish.github.io/household-market-basket-apriori/
+- **Interactive app:** Deploy free on [Streamlit Community Cloud](https://share.streamlit.io/deploy?repository=HarshithaSatthish/household-market-basket-apriori&branch=master&mainModule=household-apriori/app.py)  
+  Main file path: `household-apriori/app.py`
+
+> GitHub Pages hosts the static project site only. The Streamlit app needs Streamlit Community Cloud (or local `streamlit run`).
 # Household Market Basket Analysis using Apriori
 
 Interactive data-mining web application that discovers frequently purchased **household product combinations** using the **Apriori association rule mining algorithm**.

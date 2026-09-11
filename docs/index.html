@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Household Market Basket Analysis using Apriori</title>
+  <meta name="description" content="College data-mining project: Apriori market basket analysis for household products (Streamlit)." />
+  <style>
+    :root {
+      --teal: #0f766e;
+      --teal-dark: #134e4a;
+      --ink: #0f172a;
+      --muted: #475569;
+      --bg: #f0fdfa;
+      --card: #ffffff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, #ccfbf1 0%, transparent 55%),
+        radial-gradient(900px 500px at 100% 0%, #e0f2fe 0%, transparent 50%),
+        linear-gradient(180deg, #f8fafc 0%, var(--bg) 100%);
+      min-height: 100vh;
+    }
+    .wrap { max-width: 880px; margin: 0 auto; padding: 3rem 1.25rem 4rem; }
+    .brand {
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--teal);
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      line-height: 1.15;
+      color: var(--teal-dark);
+      margin: 0 0 0.75rem;
+    }
+    .lead { font-size: 1.1rem; color: var(--muted); max-width: 40rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 1.75rem 0 2.5rem; }
+    a.btn {
+      display: inline-block;
+      text-decoration: none;
+      padding: 0.85rem 1.25rem;
+      border-radius: 10px;
+      font-weight: 650;
+      border: 1px solid transparent;
+    }
+    a.btn-primary { background: var(--teal); color: #fff; }
+    a.btn-primary:hover { background: var(--teal-dark); }
+    a.btn-secondary { background: var(--card); color: var(--teal-dark); border-color: #99f6e4; }
+    .note {
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+      color: #9a3412;
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+    }
+    .grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+    .card {
+      background: var(--card);
+      border: 1px solid #ccfbf1;
+      border-radius: 12px;
+      padding: 1.1rem 1.15rem;
+      box-shadow: 0 1px 2px rgba(15, 118, 110, 0.06);
+    }
+    .card h2 { margin: 0 0 0.4rem; font-size: 1rem; color: var(--teal); }
+    .card p { margin: 0; color: var(--muted); font-size: 0.95rem; line-height: 1.45; }
+    ol.flow {
+      background: var(--card);
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 1.1rem 1.1rem 1.1rem 2.2rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    footer { margin-top: 2.5rem; color: #64748b; font-size: 0.9rem; }
+    code { background: #ecfeff; padding: 0.1rem 0.35rem; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="brand">Data Mining · Association Rules</div>
+    <h1>Household Market Basket Analysis using Apriori</h1>
+    <p class="lead">
+      Interactive Streamlit application that discovers household product combinations
+      with the Apriori algorithm — frequent itemsets, support, confidence, lift, and recommendations.
+    </p>
+
+    <div class="actions">
+      <a class="btn btn-primary" href="https://share.streamlit.io/deploy?repository=HarshithaSatthish/household-market-basket-apriori&branch=master&mainModule=household-apriori/app.py" target="_blank" rel="noopener">
+        Deploy / Open Live App (Streamlit Cloud)
+      </a>
+      <a class="btn btn-secondary" href="https://github.com/HarshithaSatthish/household-market-basket-apriori" target="_blank" rel="noopener">
+        View source on GitHub
+      </a>
+    </div>
+
+    <div class="note">
+      <strong>Why not a full app on GitHub Pages?</strong>
+      GitHub Pages only hosts static HTML/CSS/JS. This project is a Python Streamlit server app,
+      so the interactive demo runs on <strong>Streamlit Community Cloud</strong> (free).
+      This Pages site is the project homepage and launch pad.
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Technique</h2>
+        <p>Apriori association rule mining with support, confidence, and lift (mlxtend).</p>
+      </div>
+      <div class="card">
+        <h2>Dataset</h2>
+        <p>900 household shopping transactions across 22 everyday products.</p>
+      </div>
+      <div class="card">
+        <h2>Features</h2>
+        <p>KPIs, rules, recommendations, Plotly charts, rule network, viva walkthrough.</p>
+      </div>
+    </div>
+
+    <h2 style="margin-top:2rem;color:var(--teal-dark);">Viva core flow</h2>
+    <ol class="flow">
+      <li>Transactions</li>
+      <li>Preprocessing</li>
+      <li>One-Hot Encoding</li>
+      <li>Apriori</li>
+      <li>Frequent Itemsets</li>
+      <li>Association Rules</li>
+      <li>Support / Confidence / Lift</li>
+      <li>Recommendations</li>
+    </ol>
+
+    <h2 style="margin-top:2rem;color:var(--teal-dark);">Run locally</h2>
+    <div class="card">
+      <p>
+        <code>cd household-apriori</code><br />
+        <code>pip install -r requirements.txt</code><br />
+        <code>streamlit run app.py</code>
+      </p>
+    </div>
+
+    <footer>
+      Academic data-mining project ·
+      <a href="https://github.com/HarshithaSatthish/household-market-basket-apriori">HarshithaSatthish/household-market-basket-apriori</a>
+    </footer>
+  </main>
+</body>
+</html>
