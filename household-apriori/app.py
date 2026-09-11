@@ -262,7 +262,11 @@ def tab_explorer(result: dict, raw: pd.DataFrame) -> None:
 
     st.markdown("#### Most frequently purchased products")
     st.dataframe(summary["top_products"], use_container_width=True)
-    st.plotly_chart(chart_top_products(result["cleaned"]), use_container_width=True)
+    st.plotly_chart(
+        chart_top_products(result["cleaned"]),
+        use_container_width=True,
+        key="explorer_top_products",
+    )
 
     with st.expander("One-hot encoded matrix (sample)"):
         st.caption("Each row is a transaction; 1/True means the product was purchased.")
@@ -364,19 +368,43 @@ def tab_recommendations(result: dict) -> None:
 
 
 def tab_visualizations(result: dict) -> None:
-    st.plotly_chart(chart_top_products(result["cleaned"]), use_container_width=True)
-    st.plotly_chart(chart_top_itemsets(result["itemsets"]), use_container_width=True)
+    st.plotly_chart(
+        chart_top_products(result["cleaned"]),
+        use_container_width=True,
+        key="viz_top_products",
+    )
+    st.plotly_chart(
+        chart_top_itemsets(result["itemsets"]),
+        use_container_width=True,
+        key="viz_top_itemsets",
+    )
     c1, c2 = st.columns(2)
     with c1:
-        st.plotly_chart(chart_rules_by_confidence(result["rules"]), use_container_width=True)
+        st.plotly_chart(
+            chart_rules_by_confidence(result["rules"]),
+            use_container_width=True,
+            key="viz_rules_confidence",
+        )
     with c2:
-        st.plotly_chart(chart_rules_by_lift(result["rules"]), use_container_width=True)
-    st.plotly_chart(chart_support_confidence_scatter(result["rules"]), use_container_width=True)
+        st.plotly_chart(
+            chart_rules_by_lift(result["rules"]),
+            use_container_width=True,
+            key="viz_rules_lift",
+        )
+    st.plotly_chart(
+        chart_support_confidence_scatter(result["rules"]),
+        use_container_width=True,
+        key="viz_support_confidence",
+    )
 
 
 def tab_network(result: dict) -> None:
     st.caption("Nodes = products · Edges = association rules · Thicker edges = stronger lift")
-    st.plotly_chart(chart_rule_network(result["rules"]), use_container_width=True)
+    st.plotly_chart(
+        chart_rule_network(result["rules"]),
+        use_container_width=True,
+        key="network_rules",
+    )
 
 
 def tab_how_apriori() -> None:
